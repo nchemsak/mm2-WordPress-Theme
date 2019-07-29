@@ -13,7 +13,7 @@ var SynthPad = (function() {
     var gainNode;
 
     // Notes
-    var lowNote = 5;
+    var lowNote = 5; 
     var highNote = 60;
 
     // Constructor

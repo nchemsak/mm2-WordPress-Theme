@@ -13,7 +13,7 @@
   let slider3 = { value: 0.5 };
   // LFO CONTROLS
   let lfoDropdown = { value: 'sine' };
-  let lfoSlider1 = { value: 3.0 };
+  let lfoSlider1 = { value: 3.0 }; 
   let lfoSlider2 = { value: 1.0 };
 
   let ppause = { value: '' };

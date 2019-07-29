@@ -15,7 +15,7 @@ function getLocation() {
         navigator.geolocation.getCurrentPosition(position => {
             getWeather(position.coords.latitude, position.coords.longitude);
         });
-    } else {
+    } else { 
         loc.innerHTML = "Geolocation is not supported by this browser.";
     }
 }

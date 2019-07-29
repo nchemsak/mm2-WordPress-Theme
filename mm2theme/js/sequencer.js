@@ -18,7 +18,7 @@ let context,
     drumKit = null,
     tempo = 100,
     maxTempo = 300,
-    minTempo = 20,
+    minTempo = 20, 
     stepTempo = 1,
     stepTempo5 = 5;
 

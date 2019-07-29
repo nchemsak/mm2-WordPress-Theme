@@ -6,7 +6,7 @@ module.exports = function(grunt) {
         sass: {
             dist: {
                 files: {
-                    'css/styles.full.css': 'css/styles.scss'
+                    'mm2theme/css/styles.full.css': 'mm2theme/css/styles.scss'
                 }
             }
         },
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
                 runInBackground: true,
 
                 // Tell grunt task to open the browser
-                openBrowser: true
+                // openBrowser: true
             }
         },
 
@@ -93,7 +93,7 @@ module.exports = function(grunt) {
                 tasks: ['ftp_push']
             },
             sass: {
-                files: ['css/*.scss'],
+                files: ['mm2theme/css/*.scss'],
                 tasks: ['sass', 'cssmin', 'ftp_push'],
             },
             php: {

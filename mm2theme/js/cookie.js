@@ -19,7 +19,7 @@ function GetCookie(name) {
             break;
     }
     return null;
-}
+} 
 
 function SetCookie(name, value) {
     var argv = SetCookie.arguments;

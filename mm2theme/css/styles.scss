@@ -6,22 +6,22 @@
 // xl: 1200px
 // @include media-breakpoint-up(sm) {}
 // @include media-breakpoint-up(md) {}
-// @include media-breakpoint-up(lg) {}
+// @include media-breakpoint-up(lg) {} 
 // @include media-breakpoint-up(xl) {}
-//
-//
+// 
+// 
 //1200 - 1500
-@mixin xxl {
+@mixin xxl {   
     @media (min-width: 1500px) {
         @content;
     }
 }
 
 
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
-@import "../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/grid";
 
 
 

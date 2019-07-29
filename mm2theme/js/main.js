@@ -20,7 +20,7 @@ if (window.location.href.indexOf("left-recipe-shop") > -1) {
 } else {
     $(".eagle-eye").css("background-position", "48% 49%");
 }
-
+ 
 
 function toggleQuote() {
     $('#home-page-quote').toggleClass('d-none');
