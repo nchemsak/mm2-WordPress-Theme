@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Nick Chemsak">
+    <title>Ephemeral Wave</title>
+    <!-- STYLESHEETS -->
+    <!-- <link rel="stylesheet" href="lib/bootstrap-4.0.0/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+</head>
+
+<body>
+    <div class="overlay">
+        <div class="overlay-content">
+            <div class="container">
+                Welcome!
+                <br /> <br />
+                Use your computer<br />keyboard "arrow keys"<img src="images/icons/arrowkey.png" class="arrow-key" alt="keyboard arrow key" /><br />to control the bee.<br />
+                <!--  Click "Start" -->
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">START</a>
+            </div>
+        </div>
+    </div>
+    <div class="page-wrapper" id="sequencer-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <section id="main-content" class="scroll">
+                        <div class="page-content">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="optin7">VOLUME
+                                            <br>
+                                            <input type='range' min='0' max='1' step='0.01' value='0.75' id='seqVolume' class="seqOptin">
+                                            <button id="play-pause" type="button" class="btn btn-default btn- noselect">
+                                                <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                                                <!-- <i class="glyphicon glyphicon-play"></i> -->
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="tempo-container optin7">TEMPO
+                                            <div class="row">
+                                                <input id="tempo-input" type="number">
+                                                <span class="space">
+                                            <span id="decrease-tempo" class="glyphicon glyphicon-minus btn btn-default tempo-btn"><span class='fontIncrease'> 1</span></span>
+                                                <span id="increase-tempo" class="glyphicon glyphicon-plus btn btn-default tempo-btn"><span class='fontIncrease'> 1</span></span>
+                                                </span><span class="space">
+                                            <span id="decrease-tempo-by-five" class="glyphicon glyphicon-minus btn btn-default tempo-btn"><span class='fontIncrease'> 5</span></span>
+                                                <span id="increase-tempo-by-five" class="glyphicon glyphicon-plus btn btn-default tempo-btn"><span class='fontIncrease'> 5</span></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- SEQUENCER BEGIN -->
+                            <!--    *********************************************************************
+                            Hihats and Cymbals
+************************************************************************** -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="cymDiv optin7"><span class="bottomRoom">CYMBALS</span>
+                                            <div class="row" data-instrument="hihat">
+                                                <span class="instrument-label"><strong>hihat 1</strong></span>
+                                                <div class="pad column_0 dark selected"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4 selected"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark selected"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="808-hihat-01">
+                                                <span class="instrument-label"><strong>hihat 2</strong></span>
+                                                <div class="pad column_0 dark "></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark selected"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4 "></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6 selected"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark "></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark selected"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12 "></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14 selected"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="808-hihat-02">
+                                                <span class="instrument-label"><strong>hihat 3</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12 selected"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="cym">
+                                                <span class="instrument-label"><strong>SPLASH</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="cym02">
+                                                <span class="instrument-label"><strong>TRASH</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="cym03">
+                                                <span class="instrument-label"><strong>CHINA</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="ride01">
+                                                <span class="instrument-label"><strong>RIDE</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                        </div>
+                                        <!-- *********************************************************************
+                            SNARE DRUMS
+**************************************************************************-->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="snareDiv optin7">SNARES
+                                            <div class="row" data-instrument="snare">
+                                                <span class="instrument-label"><strong>snare 1</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="808-snare-01">
+                                                <span class="instrument-label"><strong>snare 2</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="snare03">
+                                                <span class="instrument-label"><strong>snare 3</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="snare04">
+                                                <span class="instrument-label"><strong>snare 4</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                        </div>
+                                        <!-- SAMPLER -->
+                                        <div class="optin10"><strong>SAMPLER</strong>
+                                            <button id="recordStop" type="button" class="btn btn-default btn- noselect seqButtonStyle">
+                                                <span class="glyphicon glyphicon-record seqGlyphStyle"></span>
+                                            </button>
+                                            <button id="downloadButton" type="button" class="btn btn-default btn- noselect seqButtonStyle2" disabled>
+                                                <span class="glyphicon glyphicon-download-alt seqGlyphStyle2" aria-hidden="true"></span>
+                                            </button>
+                                            <div class="row" data-instrument="drumloop2">
+                                                <span class="instrument-label"><strong></strong></span>
+                                                <div id="pausePlay" class="pad  column_0 dark samplerPad"></div>
+                                                <div class="pad column_1 dark samplerPad"></div>
+                                                <div class="pad column_2 dark samplerPad"></div>
+                                                <div class="pad column_3 dark samplerPad"></div>
+                                                <div class="pad column_4 samplerPad"></div>
+                                                <div class="pad column_5 samplerPad"></div>
+                                                <div class="pad column_6 samplerPad"></div>
+                                                <div class="pad column_7 samplerPad"></div>
+                                                <div class="pad column_8 dark samplerPad"></div>
+                                                <div class="pad column_9 dark samplerPad"></div>
+                                                <div class="pad column_10 dark samplerPad"></div>
+                                                <div class="pad column_11 dark samplerPad"></div>
+                                                <div class="pad column_12 samplerPad"></div>
+                                                <div class="pad column_13 samplerPad"></div>
+                                                <div class="pad column_14 samplerPad"></div>
+                                                <div class="pad column_15 samplerPad"></div>
+                                            </div>
+                                            LIVE INPUT CONTROLS
+                                            <br>
+                                            <select class="optin9" id="audioinput" ng-model="dropdown.index" ng-change="changeInput();">
+                                            </select>
+                                            <select class="optin9" id="effect" ng-model="dropdown2.index" ng-change="changeEffect();">
+                                                <option>Delay</option>
+                                                <option>LFO</option>
+                                                <option>Stereo Flanger</option>
+                                                <option>Telephone EQ Filter </option>
+                                            </select>
+                                            <br> EFFECT MIX: {{slider.value * 100 | number : 0}} %
+                                            <input type="range" min="0.0" max="1.0" step="0.01" ng-model="slider.value" ng-change="crossfade();" class="liveVolume2 seqOptin2">
+                                            <br>VOLUME:
+                                            <input type='range' min='0' max='1' step='0.01' value='0.75' id='liveVolume2' class="seqOptin2 liveVolume2">
+                                            <div id="controls" ng-model="ngControls">
+                                                <!-- delay -->
+                                                <div id="delayControls">
+                                                    <br>BPM: {{60 / slider2.value | number : 0}}
+                                                    <input id="dtime" type="range" min="0.2" max="1.0" step="0.01" ng-model="slider2.value" ng-change="changeEffect();" class="liveVolume2 seqOptin2">
+                                                    <br>Feedback
+                                                    <input id="dregen" type="range" min="0.1" max="1.0" step="0.01" ng-model="slider3.value" ng-change="changeEffect();" class="liveVolume2 seqOptin2">
+                                                </div>
+                                                <!-- LFO -->
+                                                <div id="gainLFOControls">
+                                                    LFO Shape:
+                                                    <select id="lfotype webmenu" name="webmenu" ng-model="lfoDropdown.value" ng-change="changeEffect();" class="optin">
+                                                        <option value="sine" data-image="/lib/node_modules/msdropdown/icons/sine1.png">SINE</option>
+                                                        <option value="square" data-image="./lib/node_modules/msdropdown/icons/sine1.png">SQUARE</option>
+                                                        <option value="sawtooth" data-image="../lib/node_modules/msdropdown/icons/sine1.png">SAWTOOTH</option>
+                                                        <option value="triangle" data-image="lib/node_modules/msdropdown/icons/sine1.png">TRIANGLE</option>
+                                                    </select>
+                                                    BPM: {{60 * lfoSlider1.value}}
+                                                    <input id="lfo" type="range" min="0.25" max="20" step="0.25" value="3" ng-model="lfoSlider1.value" class="liveVolume2 seqOptin2" ng-change="changeEffect();">
+                                                </div>
+                                                <!-- Stereo Flanger -->
+                                                <div id="stFlangeControls">
+                                                    <br>
+                                                    <option id="sflspeed" min="0.05" max="2" step="0.05" value="0.15">
+                                                        <br>
+                                                    <option id="sfldelay" min="0.001" max="0.02" step="0.001" value="0.003">
+                                                        <br>
+                                                    <option id="sfldepth" min="0.0005" max="0.02" step="0.00025" value="0.005">
+                                                        <br>
+                                                    <option id="sflfb" min="0" max="1" step="0.01" value="0.9">
+                                                </div>
+                                                <!-- telephone -->
+                                                <div id="telephoneControls">
+                                                </div>
+                                                <!-- autowah -->
+                                                <div id="autowahControls">
+                                                    <br> Envelope follower filter frequency:
+                                                    <input id="awEF" type="range" min="0.25" max="20" step="0.25" value="10" onInput="if (awFollower) awFollower.frequency.value = event.target.value;">
+                                                    <br> Filter depth (log):
+                                                    <input id="lfo" type="range" min="0" max="4" step="0.1" value="3.5" onInput="if (awDepth) awDepth.gain.value = Math.pow(2,10+parseFloat(event.target.value));">
+                                                    <br> Filter Q:
+                                                    <input id="awQ" type="range" min="0.0" max="20.0" step="0.1" value="5.0" onInput="if (awFilter) awFilter.Q.value = event.target.value;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- *********************************************************************
+                            KICK drums
+**************************************************************************-->
+                                <div>
+                                    <div class="col-md-6">
+                                        <div class="kickDiv optin7">KICKS
+                                            <div class="row" data-instrument="kick">
+                                                <span class="instrument-label"><strong>Drop 1</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="808-kick-03">
+                                                <span class="instrument-label"><strong>Drop 2</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="kick05">
+                                                <span class="instrument-label"><strong>Industrial</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="808-kick-02">
+                                                <span class="instrument-label"><strong>808 1</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="808-kick-01">
+                                                <span class="instrument-label"><strong>808 2</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="kick06">
+                                                <span class="instrument-label"><strong>Thud</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                        </div>
+                                        <!-- *********************************************************************
+                            TOMS
+**************************************************************************-->
+                                        <div class="tomDiv optin7">TOMS
+                                            <div class="row" data-instrument="808-tom-01">
+                                                <span class="instrument-label"><strong>808</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark selected"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5 selected"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark selected"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="tom04">
+                                                <span class="instrument-label"><strong>real 1</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                            <div class="row" data-instrument="tom03">
+                                                <span class="instrument-label"><strong>real 2</strong></span>
+                                                <div class="pad column_0 dark"></div>
+                                                <div class="pad column_1 dark"></div>
+                                                <div class="pad column_2 dark"></div>
+                                                <div class="pad column_3 dark"></div>
+                                                <div class="pad column_4"></div>
+                                                <div class="pad column_5"></div>
+                                                <div class="pad column_6"></div>
+                                                <div class="pad column_7"></div>
+                                                <div class="pad column_8 dark"></div>
+                                                <div class="pad column_9 dark"></div>
+                                                <div class="pad column_10 dark"></div>
+                                                <div class="pad column_11 dark"></div>
+                                                <div class="pad column_12"></div>
+                                                <div class="pad column_13"></div>
+                                                <div class="pad column_14"></div>
+                                                <div class="pad column_15"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <video id="recorded" autoplay></video>
+                </div>
+            </div>
+            </section>
+        </div>
+        <div class="col-12 col-lg-4">
+            <section id="side-nav-list" class="toggle options-menu-off">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 column-1">
+                        <a href="#" onclick="toggleOptions(); return false;"><h2 class="side-nav-list-heading"></h2></a>
+                        <!--                                 <div class="eagle-eye">
+                                    <i class="fa fa-arrow-up"></i>
+
+                                </div> -->
+                        <section class="eagle-eye">
+                            <img class="bee1 toggle show-bee" src="images/icons/bee1.ico">
+                            <img class="bee2 toggle show-bee" src="images/icons/bee2.ico">
+                    </section>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 column-2">
+                        <!-- <ul class="sidemenu-magic">
+                                    <li>Health<span class="magic">191</span></li>
+                                    <li>Magic<span class="magic">0</span></li>
+                                    <li>Temp<span class="magic">0</span></li>
+                                    <li>Weather<span class="magic">Rain</span></li>
+                                </ul> -->
+                        <div class="row">
+                            <div class="col-6">Health</div>
+                            <div class="col-6 text-right">191</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Magic</div>
+                            <div class="col-6 text-right">0</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Temp</div>
+                            <div class="col-6 text-right">28&deg;F</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Weather</div>
+                            <div class="col-6 text-right">Snow</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div id="options-row">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-3 col-xl-3">'<a href="#" onclick="toggleOptions(); return false;">O</a>' Options</div>
+            <div class="col-12 col-md-6 col-lg-3 col-xl-3">Day= 332</div>
+            <div class="col-12 col-md-6 col-lg-3 col-xl-3">Year= 2018</div>
+            <div class="col-12 col-md-6 col-lg-3 col-xl-3">Face= <span class="direction north"></span></div>
+        </div>
+    </div>
+    <section id="character-section">
+        <div class="row">
+             <div class="col-xs-12 col-lg-6"><span class="name">1) <a href="/character">Character</a></span></div>
+                    <div class="col-xs-12 col-lg-6"><span class="name">2) <a href="/drum-machine">Drum Machine</a></span></div>
+                    <div class="col-xs-12 col-lg-6"><span class="name">3) <a href="/art">Art</a></span></div>
+                    <div class="col-xs-12 col-lg-6"><span class="name">4) <a href="/fermentation">Fermentation</a></span></div>
+                    <div class="col-xs-12 col-lg-6"><span class="name">5) <a href="/rss">RSS Feed</a></span></div>
+                    <div class="col-xs-12 col-lg-6"><span class="name">6) <a href="/katsura">Katsura Tree</a></span></div>
+                    <div class="col-xs-12 col-lg-6"><span class="name">7) <a href="/coding">Coding</a></span></div>
+                    <div class="col-xs-12 col-lg-6"><span class="name">8) <a href="/contact">Contact</a></span></div>
+        </div>
+    </section>
+    </div>
+    </div>
+    <!-- ############################# SCRIPTS ################################# -->
+    <script src="lib/jquery-3.2.1.min.js"></script>
+    <script src="lib/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="lib/parallax.min.js"></script>
+    <script src="lib/waves.min.js"></script>
+    <!-- <script src="lib/jquery.easing/jquery.easing.min.js"></script> -->
+    <script src="js/sequencer.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+        ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+</body>
+
+</html>

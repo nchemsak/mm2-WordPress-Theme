@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Nick Chemsak">
+    <title>Ephemeral Wave</title>
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/fontawesome-5.6.3-web/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+</head>
+
+<body id="codingpage">
+    <div class="overlay">
+        <div class="overlay-content">
+            <div class="container">
+                Welcome!
+                <br /> <br />
+                Use your computer<br />keyboard "arrow keys"<img src="images/icons/arrowkey.png" class="arrow-key" alt="keyboard arrow key" /><br />to control the bee.<br />
+                <!--  Click "Start" -->
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">START</a>
+            </div>
+        </div>
+    </div>
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div id="main" class="col-xs-12 col-lg-8">
+                    <section id="main-content" class="scroll">
+                        <!--       <div class="header-image">
+                            <img src="/images/mm2.png" class="img-fluid" />
+                            <img class="weather-overlay" src="images/icons/salt.gif" />
+                        </div> -->
+                        <div class="page-content">
+                            <!--          <a href="#">
+                                    <h1>
+                                        <img class="icon" src="images/icons/cabbage.png" />Coding
+                                    </h1>
+                                </a> -->
+                            <h2>Web Audio API</h2>
+                            <div id="character">
+                                <h3 id="traits"><img class="icon" src="images/icons/map.ico" />Kick Drum created with oscillators</h3>
+                                <!-- https://dev.opera.com/articles/drum-sounds-webaudio/
+                                First, create an instance of the AudioContext and store it in a variable:
+                                <pre>var context = new AudioContext();</pre>
+                                The sound begins at a higher frequency (attack) then quickly falls to a lower frequency. While this occurs, the volume also decreases.
+                                <pre>function Kick(context) {
+    this.context = context;
+}</pre>
+                                <pre>Kick.prototype.setup = function() {
+    this.osc = this.context.createOscillator();
+    this.gain = this.context.createGain();
+    this.osc.connect(this.gain);
+    this.gain.connect(this.context.destination);
+};
+</pre>
+                                <pre>Kick.prototype.trigger = function(time) {
+    this.setup();
+};
+</pre>
+                                this.osc.frequency.setValueAtTime(150, time);
+                                The “envelope” of the sound:
+                                <pre>this.gain.gain.setValueAtTime(1, time);</pre>
+                                Drop the FREQUENCY of the oscillator rapidly after the initial attack.
+                                <pre>this.osc.frequency.exponentialRampToValueAtTime(0.01, time + 0.5);</pre>
+                                Decrease the GAIN to close to zero over the next 0.5 seconds
+                                <pre>this.gain.gain.exponentialRampToValueAtTime(0.01, time + 0.5);</pre>
+                                &nbsp;
+                                <pre>this.osc.start(time);
+
+                                this.osc.stop(time + 0.5);</pre>
+                                };
+                                // var kick = new Kick(context); -->
+                                section coming soon...
+                                <hr />
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div id="sidebar" class="col-xs-12 col-lg-4">
+                    <section id="side-nav-list" class="toggle options-menu-on">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 column-1">
+                                <!--     <a href="#" onclick="toggleOptions(); return false;">
+                                    <h2 class="side-nav-list-heading"></h2>
+                                </a> -->
+                                <section class="eagle-eye">
+                                    <div id="options-menu" class="d-block">
+                                        <h1>Coding</h1>
+                                        <a href="#">
+                                            <h4><img class="options-icon" src="images/icons/Wooden-Sword-Blue.ico" />Web Audio API</h4>
+                                        </a>
+                                        <a href="#">
+                                            <h5><img class="options-icon" src="images/icons/Wooden-Sword-Blue.ico" />Kick Drum Oscillator</h5>
+                                        </a>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 column-2">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div id="location" class="info"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">Temp</div>
+                                    <div class="col-6 text-right">
+                                        <div id="temperature" class="info">
+                                            <span id="temperature-num"></span><span>°</span><span id="temperature-scale">C</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">Weather</div>
+                                    <div class="col-6 text-right">
+                                        <div id="weather-condition" class="info"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div id="options-row">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-3 col-xl-3">'<a href="#" onclick="firstVisit(); return false;">H</a>' Help</div>
+                    <div class="col-xs-12 col-md-6 col-lg-3 col-xl-3">Day= 332</div>
+                    <div class="col-xs-12 col-md-6 col-lg-3 col-xl-3">Year= 2019</div>
+                    <div class="col-xs-12 col-md-6 col-lg-3 col-xl-3"> <a href="/" class="return-to-map">Return to Map</a>
+                    </div>
+                </div>
+            </div>
+            <section id="character-section">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-6"><span class="name">1) <a href="/character">Character</a></span></div>
+                    <div class="col-xs-12 col-lg-6"><span class="name">2) <a href="/drum-machine">Drum Machine</a></span></div>
+                    <div class="col-xs-12 col-lg-6"><span class="name">3) <a href="/art">Art</a></span></div>
+                    <div class="col-xs-12 col-lg-6"><span class="name">4) <a href="/fermentation">Fermentation</a></span></div>
+                    <div class="col-xs-12 col-lg-6"><span class="name">5) <a href="/rss">RSS Feed</a></span></div>
+                    <div class="col-xs-12 col-lg-6"><span class="name">6) <a href="/katsura">Katsura Tree</a></span></div>
+                    <div class="col-xs-12 col-lg-6"><span class="name">7) <a href="/coding">Coding</a></span></div>
+                    <div class="col-xs-12 col-lg-6"><span class="name">8) <a href="/contact">Contact</a></span></div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- ############################# SCRIPTS ################################# -->
+    <script src="lib/jquery-3.2.1.min.js"></script>
+    <script src="lib/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="lib/parallax.min.js"></script>
+    <script src="lib/waves.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/weather.js"></script>
+    <script>
+    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+        ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+</body>
+
+</html>
