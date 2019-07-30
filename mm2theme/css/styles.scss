@@ -949,26 +949,26 @@ h2 {
 
     &.options-menu-off {
         .side-nav-list-heading {
-            &:before {
+            &:before { 
                 content: 'Map';
             }
-        }
+        } 
 
         #weather-condition,
         #temperature-num,
-        #temperature-scale {
-            font-size: 16px;
+        #temperature-scale { 
+            font-size: 16px;  
         }
-
+ 
         .eagle-eye {
             border-radius: 15px;
-            background-image: url("/images/map-edit9.png");
+            background-image: url("/public_html/wp-content/themes/mm2theme/images/map-edit9.png"); 
             background-size: cover;
             background-size: contain;
             background-size: auto;
             // height: 275px;
             // background-position: 48% 71%;
-            // background-position: 48% 49%;
+            background-position: 48% 49%;
             background-repeat: no-repeat;
             position: relative;
 

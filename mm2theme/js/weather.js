@@ -1,3 +1,4 @@
+(function($) {
 const loc = document.getElementById("location");
 const temNum = document.getElementById("temperature-num");
 const temScale = document.getElementById("temperature-scale");
@@ -91,3 +92,5 @@ function cToF(celsius) {
 window.onload = function() {
     getLocation();
 };
+
+})(jQuery);

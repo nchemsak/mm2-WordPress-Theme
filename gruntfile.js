@@ -17,9 +17,9 @@ module.exports = function(grunt) {
             target: {
                 files: [{
                     expand: true,
-                    cwd: 'css/',
+                    cwd: 'mm2theme/css/',
                     src: ['*.css', '!*.min.css'],
-                    dest: 'css/',
+                    dest: 'mm2theme/css/',
                     ext: '.min.css'
                 }]
             }
@@ -96,8 +96,20 @@ module.exports = function(grunt) {
                 files: ['mm2theme/css/*.scss'],
                 tasks: ['sass', 'cssmin', 'ftp_push'],
             },
+             cssmin: {
+                files: ['mm2theme/css/.min.css'],
+                tasks: ['ftp_push'],
+            },
             php: {
                 files: ['mm2theme/*.php', 'mm2theme/page-templates/*.php'],
+                tasks: ['ftp_push']
+            },
+            images: {
+                files: ['mm2theme/images/**/*', 'mm2theme/images/**/*'],
+                tasks: ['ftp_push']
+            },
+                lib: {
+                files: ['mm2theme/lib/**/*', 'mm2theme/images/**/*'],
                 tasks: ['ftp_push']
             }
         }
