@@ -1,3 +1,6 @@
+"use strict";
+jQuery(document).ready(function() {
+
 function getCookieVal(offset) {
     var endstr = document.cookie.indexOf(";", offset);
     if (endstr == -1)
@@ -62,3 +65,4 @@ function ResetCounts() {
 }
 
 // window.onload = DisplayInfo
+});

@@ -1,6 +1,6 @@
 "use strict";
-jQuery(document).ready(function() {
-    (function($) {
+$(document).ready(function() {
+    // (function($) {
         var counterNorth = 49;
         var counterEast = 48;
         var counterEastMain = 165;
@@ -383,5 +383,5 @@ jQuery(document).ready(function() {
     put ascii art here    `, "font-family:monospace")
 
 
-    })(jQuery);
+    // })(jQuery);
 });

@@ -1,18 +1,16 @@
 <?php
 
 // require_once('wp_bootstrap_navwalker.php');
-
-
 // require_once get_template_directory() . '/wp_bootstrap_navwalker.php';
 
 
-if ( ! file_exists( get_template_directory() . '/wp_bootstrap_navwalker.php' ) ) {
-	// file does not exist... return an error.
-	return new WP_Error( 'wp-bootstrap-navwalker-missing', __( 'It appears the wp_bootstrap_navwalker.php file may be missing.', 'wp-bootstrap-navwalker' ) );
-} else {
-	// file exists... require it.
-    require_once get_template_directory() . '/wp_bootstrap_navwalker.php';
-}
+// if ( ! file_exists( get_template_directory() . '/wp_bootstrap_navwalker.php' ) ) {
+// 	// file does not exist... return an error.
+// 	return new WP_Error( 'wp-bootstrap-navwalker-missing', __( 'It appears the wp_bootstrap_navwalker.php file may be missing.', 'wp-bootstrap-navwalker' ) );
+// } else {
+// 	// file exists... require it.
+//     require_once get_template_directory() . '/wp_bootstrap_navwalker.php';
+// }
 
 
 
@@ -27,10 +25,11 @@ function site_setup() {
     add_theme_support('menus');
 
     // Register Menus
-    register_nav_menus( array(
-       'primary' => __('Primary Menu','mmd2theme') // Main Navigation
-//        'footer-menu' => __('Quicklinks','mmd2theme') // Footer Navigation
-    ));
+    // register_nav_menus( array(
+    //    'primary' => __('Primary Menu','mmd2theme') 
+    //    // Main Navigation
+      
+    // ));
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -54,33 +53,24 @@ function site_setup() {
 endif; // end main set-up function
 add_action( 'after_setup_theme', 'site_setup' );
 
-/* Add support for side bar */
-if( function_exists('acf_add_options_page') ) {
-
-	$args = array(
-		/* (string) The title displayed on the options page. Required. */
-		'page_title' => 'Global Variables',
-
-		/* (int|string) The '$post_id' to save/load data to/from. Can be set to a numeric post ID (123), or a string ('user_2').
-		Defaults to 'options'. Added in v5.2.7 */
-		'post_id' => 'globalitems',
-	);
-
-	acf_add_options_page( $args );
-
-}
 
 /*-----------------------------------------------------------------------------------*/
 /*	Functions
 /*-----------------------------------------------------------------------------------*/
 
 // Load scripts
-function main_enqueue_scripts()
-{
+// function main_enqueue_scripts()
+// {
    if (!is_admin()) {
+		// wp_deregister_script('jquery');
+		// wp_register_script('jquery', ("/lib/jquery/jquery-3.2.1.min.js"), false);
+		// wp_enqueue_script('jquery');
 
-		wp_register_script('jquery',get_template_directory_uri() . '/lib/jquery/jquery-3.2.1.min.js');
-		wp_enqueue_script('jquery');
+
+	wp_deregister_script('jquery');
+	wp_register_script('jquery', ("https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"), false);
+	wp_enqueue_script('jquery');
+
 
 		wp_register_script('popper',get_template_directory_uri() . '/lib/popper.min.js');
         wp_enqueue_script('popper');
@@ -92,16 +82,16 @@ function main_enqueue_scripts()
     	// wp_register_script('waves',get_template_directory_uri() . '/lib/waves.min.js');
         // wp_enqueue_script('waves');
 
-		// wp_register_script('cookie',get_template_directory_uri() . '/js/cookie.js');
-        // wp_enqueue_script('cookie');
+		wp_register_script('cookie',get_template_directory_uri() . '/js/cookie.js');
+        wp_enqueue_script('cookie');
 
 
     	wp_register_script('main',get_template_directory_uri() . '/js/main.js');
         wp_enqueue_script('main');
 
     	
-		// wp_register_script('weather',get_template_directory_uri() . '/js/weather.js');
-        // wp_enqueue_script('weather');
+		wp_register_script('weather',get_template_directory_uri() . '/js/weather.js');
+        wp_enqueue_script('weather');
    
 
 
@@ -122,8 +112,8 @@ function main_enqueue_scripts()
 
 
     }
-}
-add_action('wp_enqueue_scripts', 'main_enqueue_scripts'); // Add Custom Scripts to wp_head
+// }
+// add_action('wp_enqueue_scripts', 'main_enqueue_scripts'); // Add Custom Scripts to wp_head
 add_theme_support( 'post-thumbnails');
 set_post_thumbnail_size( 200, 200, false );
 
@@ -149,135 +139,62 @@ function main_enqueue_css()
 }
 add_action('wp_enqueue_scripts', 'main_enqueue_css'); // Add Theme Stylesheet
 
-//bootstrap pagination
-function custom_pagination() {
-    global $wp_query;
-    $big = 999999999; // need an unlikely integer
-    $pages = paginate_links( array(
-            'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-            'format' => '?paged=%#%',
-            'current' => max( 1, get_query_var('paged') ),
-            'total' => $wp_query->max_num_pages,
-            'prev_next' => false,
-            'type'  => 'array',
-            'prev_next'   => TRUE,
-			'prev_text'    => __('«'),
-			'next_text'    => __('»'),
-        ) );
-        if( is_array( $pages ) ) {
-            $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
-            echo '<ul class="pagination">';
-            foreach ( $pages as $page ) {
-                    echo "<li>$page</li>";
-            } 
-           echo '</ul>';
-        }
+
+
+function obscure_login_errors(){
+  return "Hack muh nutz...";
 }
-
-
-//Pagination
-//This is the blog paging controls
-function main_paging_nav() {
-	global $wp_query, $wp_rewrite;
-
-	// Don't print empty markup if there's only one page.
-	if ( $wp_query->max_num_pages < 2 ) {  
-		return;
-	}
-
-	$paged        = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
-	$pagenum_link = html_entity_decode( get_pagenum_link() );
-	$query_args   = array();
-	$url_parts    = explode( '?', $pagenum_link );
-
-	if ( isset( $url_parts[1] ) ) {
-		wp_parse_str( $url_parts[1], $query_args );
-	}
-
-	$pagenum_link = remove_query_arg( array_keys( $query_args ), $pagenum_link );
-	$pagenum_link = trailingslashit( $pagenum_link ) . '%_%';
-
-	$format  = $wp_rewrite->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
-	$format .= $wp_rewrite->using_permalinks() ? user_trailingslashit( $wp_rewrite->pagination_base . '/%#%', 'paged' ) : '?paged=%#%';
-
-	echo custom_pagination();
-
-}
-
-function remove_more_link_scroll( $link ) {
-	$link = preg_replace( '|#more-[0-9]+|', '', $link );
-	return $link;
-}
-add_filter( 'the_content_more_link', 'remove_more_link_scroll' );
-
-/**
- * Filter the except length to 20 words.
- *
- * @param int $length Excerpt length.
- * @return int (Maybe) modified excerpt length.
- */
-function wpdocs_custom_excerpt_length( $length ) {
-    return 35;
-}
-add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+add_filter( 'login_errors', 'obscure_login_errors' );
 
 
 
-/**
- * Conditionally Override Yoast SEO Breadcrumb Trail
- * http://plugins.svn.wordpress.org/wordpress-seo/trunk/frontend/class-breadcrumbs.php
- * -----------------------------------------------------------------------------------
- */
-
-add_filter( 'wpseo_breadcrumb_links', 'wpse_100012_override_yoast_breadcrumb_trail' );
-
-function wpse_100012_override_yoast_breadcrumb_trail( $links ) {
-    global $post;
-
-    if ( is_singular( array( 'photos' ) ) || (is_archive() ) ) {
-
-        $breadcrumb[] = array(
-//            'url' => get_permalink( get_page_by_title( 'dfgdfgd' ) ),
-//			            'url' => get_permalink( get_option( 'category' ) ),
-			            'url' => '/before-and-after/',
-
-            'text' => 'Before and After'
-        );
-
-        array_splice( $links, 1, -2, $breadcrumb );
-    }
-
-    return $links;
-}
-
-//convert to the slug format according to conventions
-//by pulling out the spaces and the symbols and making lowercase
-function urlconvert( $procedurename ) {
-	$procedurename = strtolower( $procedurename );
-	$procedurename = str_replace( " ", "-", $procedurename);
-	$procedurename = str_replace( "&trade;", "", $procedurename);
-	$procedurename = str_replace( "&reg;", "", $procedurename);
-	//$procedurename = mb_ereg_replace( "[^a-z]", "", $procedurename);
-	return $procedurename;
-}
-
-
-
-// remove version from head
+// remove junk from head
+remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wp_generator');
+remove_action('wp_head', 'feed_links', 2);
+remove_action('wp_head', 'index_rel_link'); 
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'feed_links_extra', 3);
+remove_action('wp_head', 'start_post_rel_link', 10, 0);
+remove_action('wp_head', 'parent_post_rel_link', 10, 0);
+remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 
-// remove version from rss
-add_filter('the_generator', '__return_empty_string');
 
-// remove version from scripts and styles
-function shapeSpace_remove_version_scripts_styles($src) {
-	if (strpos($src, 'ver=')) {
-		$src = remove_query_arg('ver', $src);
-	}
-	return $src;
+
+// enable threaded comments - NOT sure why I'd need this...https://digwp.com/2010/03/wordpress-functions-php-template-custom-functions/
+function enable_threaded_comments(){
+	if (!is_admin()) {
+		if (is_singular() AND comments_open() AND (get_option('thread_comments') == 1))
+			wp_enqueue_script('comment-reply');
+		}
 }
-add_filter('style_loader_src', 'shapeSpace_remove_version_scripts_styles', 9999);
-add_filter('script_loader_src', 'shapeSpace_remove_version_scripts_styles', 9999);
+add_action('get_header', 'enable_threaded_comments');
+
+// add google analytics to footer
+// function add_google_analytics() {
+// 	echo '<script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>';
+// 	echo '<script type="text/javascript">';
+// 	echo 'var pageTracker = _gat._getTracker("UA-XXXXX-X");';
+// 	echo 'pageTracker._trackPageview();';
+// 	echo '</script>';
+// }
+// add_action('wp_footer', 'add_google_analytics');
 
 
+// function wpb_custom_logo() {
+// echo '
+// <style type="text/css">
+// #wpadminbar #wp-admin-bar-wp-logo > .ab-item .ab-icon:before {
+// background-image: url(' . get_bloginfo('stylesheet_directory') . '/images/icons/arrowkey.png) !important;
+// background-position: 0 0;
+// color:rgba(0, 0, 0, 0);
+// }
+// #wpadminbar #wp-admin-bar-wp-logo.hover > .ab-item .ab-icon { 
+// background-position: 0 0;
+// }
+// </style>
+// ';
+// }
+// //hook into the administrative header output
+// add_action('wp_before_admin_bar_render', 'wpb_custom_logo');
 ?>

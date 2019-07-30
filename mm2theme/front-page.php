@@ -47,7 +47,7 @@
                             <img src="/public_html/wp-content/themes/mm2theme/images/mm2.png" class="img-fluid" />
                             <a href="#" onclick="toggleQuote(); return false;" class="h1-animation">
                                 <h1 class="homepage-h1">Ephemeral Wave</h1>
-                            </a>
+                            </a> 
                             <div id="home-page-quote" class="scroll-up d-none">
                                 <p>"You didn’t come into this world. You came out of it, like a wave from the ocean. <br />You are not a stranger here."</p><br />
                                 <p>"The moon tells me a secret: 'As full and bright as I am, this light is not my own. A million light reflections pass over me.' The source is bright and endless."</p><br />
@@ -65,8 +65,8 @@
                                 <h2> Map
                                 </h2>
                                 <section class="eagle-eye">
-                                    <img class="bee1 toggle show-bee" src="/public_html/wp-content/themes/mm2theme/images/icons/bee1.ico">
-                                    <img class="bee2 toggle show-bee" src="/public_html/wp-content/themes/mm2theme/images/icons/bee2.ico">
+                                    <img class="bee1 toggle show-bee" src="/public_html/wp-content/themes/mm2theme/images/icons/Bee1.ico">
+                                    <img class="bee2 toggle show-bee" src="/public_html/wp-content/themes/mm2theme/images/icons/Bee2.ico">
                                     <a id="play_button" class="seizure" href="#" next="#" value="ATTACK" onclick="attack()"> Attack!
                                         <audio id="audio" src="/public_html/wp-content/themes/mm2theme/audio/slap.mp3"></audio>
                                     </a>
