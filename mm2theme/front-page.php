@@ -67,12 +67,15 @@
                                 <section class="eagle-eye">
                                     <img class="bee1 toggle show-bee" src="/public_html/wp-content/themes/mm2theme/images/icons/Bee1.ico">
                                     <img class="bee2 toggle show-bee" src="/public_html/wp-content/themes/mm2theme/images/icons/Bee2.ico">
-                                    <a id="play_button" class="seizure" href="#" next="#" value="ATTACK" onclick="attack()"> Attack!
+                                    <a id="play_button" class="seizure" href="#" next="#" value="ATTACK">Attack!
                                         <audio id="audio" src="/public_html/wp-content/themes/mm2theme/audio/slap.mp3"></audio>
                                     </a>
-                                       <a id="play_button_buzz" href="#" next="#" value="buzz" onclick="buzz();">Buzz!
+                                       <a id="play_button_buzz" href="#" next="#" value="buzz">Buzz!
                                         <audio id="buzz" src="/public_html/wp-content/themes/mm2theme/audio/buzz.mp3"></audio>
                                     </a>
+
+
+
                                 </section>
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 column-2">
